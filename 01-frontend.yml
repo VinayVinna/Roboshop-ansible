@@ -22,7 +22,7 @@
 
 #source common.sh
 #
-#print_head disbale nginx
+#print_head disable nginx
 #dnf module disable nginx -y &>> $log_file
 #
 #print_head  enable nginx 24
