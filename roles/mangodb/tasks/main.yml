@@ -1,5 +1,5 @@
 - name: Copy Mangodb Repo File
-  ansible.bilutin.copy:
+  ansible.builtin.copy:
     src: mango.repo
     dest: /etc/yum.repos.d/mongo.repo
 
