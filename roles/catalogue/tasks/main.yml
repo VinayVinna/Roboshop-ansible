@@ -1,0 +1,19 @@
+- name: Load Nodejs
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: nodejs
+
+
+- name: Copy Mongodb repo file
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: Install MangoDB
+  ansible.builtin.dnf:
+    name: mongodb-mongosh
+    state: installed
+
+
+- name: load master data
+  ansible.builtin.shell: mongosh --host mangodb.vdevops21.online </app/db/master-data.js
