@@ -1,21 +1,21 @@
-- name: Copy Mangodb Repo File
+- name: Copy Mongodb Repo File
   ansible.builtin.copy:
     src: mango.repo
     dest: /etc/yum.repos.d/mongo.repo
 
-- name: Install Mangodb
+- name: Install Mongodb
   ansible.builtin.dnf:
     name: mongodb-org
     state: installed
 
-- name: update mangodb config file listen address
+- name: update mongodb config file listen address
   ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
 
-- name: start mangodb services
+- name: start mongodb services
   ansible.builtin.systemd_service:
-    name: mangodb
+    name: mongod
     state: restarted
     enabled: yes
