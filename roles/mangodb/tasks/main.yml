@@ -9,7 +9,7 @@
     state: installed
 
 - name: update mangodb config file listen address
-  ansible.builtin.replcae:
+  ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
