@@ -1,5 +1,0 @@
-- name: MangoDB Setup
-  hosts: all
-  become: true
-  roles:
-    - mangodb
