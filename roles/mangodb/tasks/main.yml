@@ -5,7 +5,7 @@
 
 - name: Install Mangodb
   ansible.builtin.dnf:
-    name: mangodb-org
+    name: mangodb.org
     state: installed
 
 - name: update mangodb config file listen address
