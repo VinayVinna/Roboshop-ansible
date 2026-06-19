@@ -1,0 +1,40 @@
+#print_head disable nodejs default
+#dnf module disable nodejs -y &>> $log_file
+#exit_status_print $?
+#
+#print_head enable nodejs 20
+#dnf module enable nodejs:20 -y &>> $log_file
+#exit_status_print $?
+#
+#print_head install node js
+#dnf install nodejs -y &>> $log_file
+#exit_status_print $?
+#artifact_download
+#cd /app
+#
+#print_head install nodejs dependencies
+#npm install &>> $log_file
+#exit_status_print $?
+#systemd_setup
+
+
+- name: Install Maven
+  ansible.builtin.dnf:
+    name: maven
+    state: installed
+
+- name: Include artifact_download
+  ansible.builtin.include_tasks:
+    file: artifact_download.yml
+
+- name: Install maven dependencies
+  ansible.builtin.shell: mvn clean package; mv target/ {{ component_name }-1.0.jar {{ component_name }}.jar
+  args:
+    chdir: /app
+
+- name: Include systemd_setup
+  ansible.builtin.include_tasks:
+    file: systemd_setup.yml
+
+
+
