@@ -28,7 +28,7 @@
     file: artifact_download.yml
 
 - name: Install maven dependencies
-  ansible.builtin.shell: mvn clean package ; mv target/{{ component_name }-1.0.jar {{ component_name }}.jar
+  ansible.builtin.shell: mvn clean package ; mv target/{{ component_name }}-1.0.jar {{ component_name }}.jar
   args:
     chdir: /app
 
