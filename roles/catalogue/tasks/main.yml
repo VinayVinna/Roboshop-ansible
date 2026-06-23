@@ -3,7 +3,6 @@
     name: common
     tasks_from: nodejs
 
-
 - name: Copy Mongodb repo file
   ansible.builtin.copy:
     src: mongo.repo
